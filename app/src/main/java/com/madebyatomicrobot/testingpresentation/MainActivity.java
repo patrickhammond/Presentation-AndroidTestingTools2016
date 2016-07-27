@@ -1,8 +1,9 @@
 package com.madebyatomicrobot.testingpresentation;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -30,8 +31,15 @@ public class MainActivity extends AppCompatActivity implements TextWatcher {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                String leftInput = leftView.getText().toString();
+                String rightInput = rightView.getText().toString();
+                String url = String.format(
+                        "https://www.google.com/#q=%s%%2B%s",
+                        leftInput,
+                        rightInput);
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
             }
         });
 
