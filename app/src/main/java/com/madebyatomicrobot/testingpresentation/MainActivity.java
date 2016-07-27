@@ -5,11 +5,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TextWatcher {
+
+    private EditText leftView;
+    private EditText rightView;
+    private TextView sumView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        leftView = (EditText) findViewById(R.id.left);
+        rightView = (EditText) findViewById(R.id.right);
+        sumView = (TextView) findViewById(R.id.sum);
+
+        leftView.addTextChangedListener(this);
+        rightView.addTextChangedListener(this);
     }
 
     @Override
@@ -48,5 +63,23 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        String leftInput = leftView.getText().toString();
+        String rightInput = rightView.getText().toString();
+        String sum = new Calculator().add(leftInput, rightInput);
+        sumView.setText(sum);
     }
 }
