@@ -19,6 +19,7 @@
         android:id="@+id/left"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
+        android:contentDescription="Left"
         android:gravity="center"/>
 
     <TextView
@@ -32,6 +33,7 @@
         android:id="@+id/right"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
+        android:contentDescription="Right"
         android:gravity="center"/>
 
     <TextView
@@ -42,9 +44,10 @@
         android:text="="/>
 
     <TextView
-        style="?android:textAppearanceMedium"
-        android:textColor="@android:color/black"
         android:id="@+id/sum"
+        style="?android:textAppearanceMedium"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="Sum"
+        android:textColor="@android:color/black"/>
 </LinearLayout>
