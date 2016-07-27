@@ -1,5 +1,6 @@
 package com.madebyatomicrobot.testingpresentation;
 
+import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 
 public class Calculator {
@@ -26,7 +27,8 @@ public class Calculator {
         }
     }
 
-    private int add(int left, int right) {
+    @VisibleForTesting
+    int add(int left, int right) {
         return left + right;
     }
 }
