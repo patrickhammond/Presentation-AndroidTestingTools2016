@@ -2,9 +2,12 @@ package com.madebyatomicrobot.testingpresentation;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(RobolectricTestRunner.class)
 public class CalculatorTest {
     private Calculator calculator;
 
@@ -29,5 +32,25 @@ public class CalculatorTest {
     @Test
     public void testAddNegativeIntegers() throws Exception {
         assertEquals(-2, calculator.add(-1, -1));
+    }
+
+    @Test
+    public void testSumIsBlankForBlankEquation() throws Exception {
+        assertEquals("", calculator.add("", ""));
+    }
+
+    @Test
+    public void testSumIsBlankForInvalidInput() throws Exception {
+        assertEquals("", calculator.add("A", "A"));
+    }
+
+    @Test
+    public void testSumIsCorrectForIntegerInput() throws Exception {
+        assertEquals("2", calculator.add("1", "1"));
+    }
+
+    @Test
+    public void testSumIsBlackForIntegerInputWithGarbage() throws Exception {
+        assertEquals("", calculator.add(" 1 ", "1"));
     }
 }
